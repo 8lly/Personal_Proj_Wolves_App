@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MyFootballDatabaseModelStoreContainer" CdmEntityContainer="MyFootballDatabaseEntities">
+    <EntitySetMapping Name="tbl_Articles">
+      <EntityTypeMapping TypeName="MyFootballDatabaseModel.tbl_Articles">
+        <MappingFragment StoreEntitySet="tbl_Articles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ArticleTitle" ColumnName="ArticleTitle" />
+          <ScalarProperty Name="ArticleContent" ColumnName="ArticleContent" />
+          <ScalarProperty Name="ArticleCreated" ColumnName="ArticleCreated" />
+          <ScalarProperty Name="ArticleSubmittedBy" ColumnName="ArticleSubmittedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Authors">
+      <EntityTypeMapping TypeName="MyFootballDatabaseModel.tbl_Authors">
+        <MappingFragment StoreEntitySet="tbl_Authors">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AuthorFirstName" ColumnName="AuthorFirstName" />
+          <ScalarProperty Name="AuthorLastName" ColumnName="AuthorLastName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

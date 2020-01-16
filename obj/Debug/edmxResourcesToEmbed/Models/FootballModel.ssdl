@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MyFootballDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_Articles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArticleTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="ArticleContent" Type="nvarchar(max)" />
+    <Property Name="ArticleCreated" Type="datetime2" Precision="7" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="ArticleSubmittedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_Authors">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AuthorFirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AuthorLastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_tbl_Articles_tbl_Authors">
+    <End Role="tbl_Authors" Type="Self.tbl_Authors" Multiplicity="0..1" />
+    <End Role="tbl_Articles" Type="Self.tbl_Articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Authors">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Articles">
+        <PropertyRef Name="ArticleSubmittedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MyFootballDatabaseModelStoreContainer">
+    <EntitySet Name="tbl_Articles" EntityType="Self.tbl_Articles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Authors" EntityType="Self.tbl_Authors" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tbl_Articles_tbl_Authors" Association="Self.FK_tbl_Articles_tbl_Authors">
+      <End Role="tbl_Authors" EntitySet="tbl_Authors" />
+      <End Role="tbl_Articles" EntitySet="tbl_Articles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

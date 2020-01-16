@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <!-- Scripts -->
+    @*<script src="node_modules/zone.js/dist/zone.js"></script>
+        <script src="node_modules/reflect-metadata/Reflect.js"></script>
+        <script src="node_modules/systemjs/dist/system.src.js"></script>
+        <script src="~/Scripts/systemjs.config.js"></script>*@
+
+    <!-- Identify JS version and run bootstrap code -->
+    @*<script>
+            System.config({
+                defaultJSExtensions: true
+            });
+            System.import('./scripts/app/main').catch(function (err) { console.error(err); });
+        </script>*@
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" src="./Content/Styles/Site.css" type="text/css">
+    @Styles.Render("./Content/Styles/Site.css")
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+    @*<script type="text/javascript" src="~/Scripts/bundles/angular.min.js"></script>*@
+    <script type="text/javascript" src="~/Scripts/bundles/angular.js"></script>
+    <script type="text/javascript" src="~/Scripts/app/Home/Index.js"></script>
+</head>
+<body style="background-color:#dddddd">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="nav-title col-md-8">
+                <h4>My Football Website</h4>
+            </div>
+            <div class="nav-links pull-right col-md-4">
+                <li>
+                    <a href="/">Teams</a>
+                    <a href="/">Table</a>
+                    <a href="/">Fixtures</a>
+                </li>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content" style="background-color:ghostwhite">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>This is my footer</p>
+        </footer>
+    </div>
+
+    @using System.Web.Optimization
+    @Scripts.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

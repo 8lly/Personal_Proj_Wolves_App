@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div ng-controller="IndexController" ng-app="myFootballWebsiteApp">
+    <div class="row" style="padding:50px;">
+
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-8 align-middle">
+                    <h2>
+                        {{ greeting }}, welcome to my Wolves news page
+                    </h2>
+                </div>
+                <div class="col-md-4">
+                    <ul style="list-style-type:none;">
+                        <li>Current Time: {{currentTime}} </li>
+                        <li>Weather: </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p style="color:grey;line-height:50px;"> Hover and click title's to discover the most recent news {{activeArticle.ArticleTitle}} </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row d-flex justify-content-center">
+                <div class="index-news-card col-md-5 card" style="background-image: url('../../Content/Images/wolves1.jpg')" ng-click="getArticle(0)">
+                    <div class="index-news-text card-img-overlay">
+                        <h2>{{ headlineNews[0].ArticleTitle }}</h2>
+                        <p>Submitted By: {{ headlineNews[0].ArticleSubmittedBy }}</p>
+                    </div>
+                </div>
+                <div class="index-news-card col-md-3 card" style="background-image: url('../../Content/Images/wolves2.jpg')" ng-click="getArticle(1)">
+                    <div class="index-news-text card-img-overlay">
+                        <h2>{{ headlineNews[1].ArticleTitle }}</h2>
+                        <p>Submitted By: {{ headlineNews[1].ArticleSubmittedBy }}</p>
+                    </div>
+                </div>
+                <div class="index-news-card col-md-3 card" style="background-image: url('../../Content/Images/wolves3.jpg')" ng-click="getArticle(2)">
+                    <div class="index-news-text card-img-overlay">
+                        <h2>{{ headlineNews[2].ArticleTitle }}</h2>
+                        <p>Submitted By: {{ headlineNews[2].ArticleSubmittedBy }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="index-news-card col-md-3 card" style="background-image: url('../../Content/Images/wolves4.jpg')" ng-click="getArticle(3)">
+                    <div class="index-news-text card-img-overlay">
+                        <h2>{{ headlineNews[3].ArticleTitle }}</h2>
+                        <p>Submitted By: {{ headlineNews[3].ArticleSubmittedBy }}</p>
+                    </div>
+                </div>
+                <div class="index-news-card col-md-5 card" style="background-image: url('../../Content/Images/wolves5.jpg')" ng-click="getArticle(4)">
+                    <div class="index-news-text card-img-overlay">
+                        <h2>{{ headlineNews[4].ArticleTitle }}</h2>
+                        <p>Submitted By: {{ headlineNews[4].ArticleSubmittedBy }}</p>
+                    </div>
+                </div>
+                <div class="index-news-card col-md-3 card" style="        background-image: url('../../Content/Images/wolves6.jpg')" ng-click="getArticle(5)">
+                    <div class="index-news-text card-img-overlay">
+                        <h2>{{ headlineNews[5].ArticleTitle }}</h2>
+                        <p>Submitted By: {{ headlineNews[5].ArticleSubmittedBy }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" style="margin-top:25px;" ng-if="activeArticle">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-8" style="background-color:#DDDDDD;padding:40px;border-radius:0.25rem">
+                        <div class="row">
+                            <h2> {{activeArticle.ArticleTitle}} </h2>
+                        </div>
+                        <div class="row">
+                            <p class="col-md-6" style="padding:unset;"> Submitted By: {{activeArticle.ArticleSubmittedBy}} </p>
+                            <p class="col-md-6" style="float:right;"> Date Posted: {{activeArticle.ArticleCreated}} </p>
+                        </div>
+                        <div class="row">
+                            <p> {{activeArticle.ArticleContent}} </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/app/Home/Index.js"></script>

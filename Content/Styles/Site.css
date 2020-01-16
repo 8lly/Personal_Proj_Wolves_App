@@ -1,0 +1,55 @@
+﻿/* _Layout styling */
+.navbar {
+    background-color: orange!important;
+    border-bottom: 2px solid black;
+}
+
+.nav-title {
+    border-right: 1px solid #333333;
+    padding: unset !important;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+    .nav-links a {
+        padding-right: 5px;
+        /*border-right: 1px solid #333333;*/
+        color: black;
+    }
+
+/* Index page */
+
+.index-news-card {
+    min-height: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    border: unset !important;
+    margin: 5px;
+}
+
+.index-news-card .index-news-text {
+    opacity: 0;
+    background-color: orange;
+}
+
+.index-news-card .index-news-text:hover {
+    opacity: 1;
+    transition: opacity 1s linear;
+}
+
+/* Applies when item is selected */
+.index-news-text:focus {
+    box-shadow: 0px 0px 5px #ffa500;
+}
+
+/* General */
+.pull-right {
+    text-align: right;
+}
+
+.pull-left {
+    text-align: left;
+}

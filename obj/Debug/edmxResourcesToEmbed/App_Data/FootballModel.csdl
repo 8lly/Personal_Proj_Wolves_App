@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MyFootballDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_Articles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ArticleTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ArticleContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ArticleCreated" Type="DateTime" annotation:StoreGeneratedPattern="Computed" Precision="3" Nullable="false" />
+    <Property Name="ArticleSubmittedBy" Type="Int32" />
+    <NavigationProperty Name="tbl_Authors" Relationship="MyFootballDatabaseModel.FK_tbl_Articles_tbl_Authors" FromRole="tbl_Articles" ToRole="tbl_Authors" />
+  </EntityType>
+  <EntityType Name="tbl_Authors">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuthorFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AuthorLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tbl_Articles" Relationship="MyFootballDatabaseModel.FK_tbl_Articles_tbl_Authors" FromRole="tbl_Authors" ToRole="tbl_Articles" />
+  </EntityType>
+  <EntityContainer Name="MyFootballDatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_Articles" EntityType="Self.tbl_Articles" />
+    <EntitySet Name="tbl_Authors" EntityType="Self.tbl_Authors" />
+    <AssociationSet Name="FK_tbl_Articles_tbl_Authors" Association="MyFootballDatabaseModel.FK_tbl_Articles_tbl_Authors">
+      <End Role="tbl_Authors" EntitySet="tbl_Authors" />
+      <End Role="tbl_Articles" EntitySet="tbl_Articles" />
+    </AssociationSet>
+    <FunctionImport Name="GetHeadlineNews" ReturnType="Collection(MyFootballDatabaseModel.GetHeadlineNews_Result)" />
+  </EntityContainer>
+  <Association Name="FK_tbl_Articles_tbl_Authors">
+    <End Type="MyFootballDatabaseModel.tbl_Authors" Role="tbl_Authors" Multiplicity="0..1" />
+    <End Type="MyFootballDatabaseModel.tbl_Articles" Role="tbl_Articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Authors">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Articles">
+        <PropertyRef Name="ArticleSubmittedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="GetHeadlineNews_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="ArticleTitle" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ArticleContent" Nullable="true" />
+    <Property Type="DateTime" Name="ArticleCreated" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ArticleSubmittedBy" Nullable="true" />
+  </ComplexType>
+</Schema>

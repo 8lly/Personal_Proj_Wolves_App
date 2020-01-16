@@ -1,0 +1,6 @@
+CREATE PROCEDURE GetHeadlineNews
+AS
+	SELECT TOP 6 *
+	FROM tbl_Articles
+	ORDER BY Id DESC
+GO
